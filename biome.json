@@ -1,5 +1,13 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.14/schema.json",
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!**/.changeset/pre.json",
+      "!**/dist"
+    ]
+  },
   "assist": {
     "enabled": true,
     "actions": {
@@ -30,15 +38,21 @@
           "options": {
             "paths": {
               "react": {
-                "importNames": ["default"]
+                "importNames": [
+                  "default"
+                ]
               },
               "expo-router": {
-                "importNames": ["router"]
+                "importNames": [
+                  "router"
+                ]
               }
             },
             "patterns": [
               {
-                "group": ["src/**"],
+                "group": [
+                  "src/**"
+                ],
                 "message": "Using relative imports instead of absolute imports"
               }
             ]
@@ -70,5 +84,15 @@
       "trailingCommas": "all",
       "semicolons": "always"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "*.json"
+      ],
+      "formatter": {
+        "lineWidth": 1
+      }
+    }
+  ]
 }

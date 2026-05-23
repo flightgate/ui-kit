@@ -28,14 +28,21 @@
     "flightgate"
   ],
   "packageManager": "pnpm@10.28.1",
-  "types": "./src/index.ts",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
-    "src",
+    "dist",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
+    "build": "tsc --project tsconfig.build.json",
     "lint": "biome check .",
     "lint:fix": "biome check . --write",
     "test": "vitest run",
