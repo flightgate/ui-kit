@@ -3,9 +3,8 @@
 ## Standard Workflow
 
 After making any changes to JavaScript/TypeScript files:
-1. Run `npm run lint:fix` to automatically fix linting issues
-2. Run `npm run format` to format the code
-3. Confirm there are no errors before completing the task
+1. Run `pnpm lint:fix` to automatically fix linting and formatting issues
+2. Confirm there are no errors before completing the task
 
 ## JavaScript/TypeScript Standards
 
@@ -58,10 +57,113 @@ After making any changes to JavaScript/TypeScript files:
 
 ## Code Quality
 
-- Ensure all code follows ESLint rules
-- Use Prettier for consistent formatting
+- Ensure all code follows Biome rules
 - No console.logs in production code
 - Proper error handling in all async functions
+
+## Component File Structure
+
+Every component lives in its own folder under `src/components/`. Shared building blocks live under `src/components/base/`.
+
+```
+ComponentName/
+  styled.ts    ← styled-components (internal, never public API)
+  index.tsx    ← public RN component (entry point)
+```
+
+The public API is re-exported from `src/components/index.ts`. Only `ComponentName` and `ComponentProps` are exported — never `Styled*` pieces.
+
+### `styled.ts`
+
+- Contains all styled-components, prefixed with `Styled` (e.g. `StyledButton`, `StyledCard`).
+- Props that drive styles use a `Styled*` interface when they differ from the public API (e.g. `StyledButtonProps`, `StyledCardProps`).
+- Uses theme tokens from `src/theme` — never hardcoded values.
+- Exports only styled pieces and their prop types:
+
+```tsx
+interface StyledCardProps {
+  radius?: BorderRadiusToken;
+  bg?: ColorToken;
+}
+
+const StyledCard = styled.View<StyledCardProps>`...`;
+
+export type { StyledCardProps };
+export { StyledCard };
+```
+
+### `index.tsx`
+
+- Defines the public component (PascalCase, no `Styled` prefix).
+- Defines `ComponentProps` — the full public API. May extend other props (`PaddingProps`), add `children`, or include business-logic props not passed to styled components.
+- Applies defaults, composes other components, and handles logic.
+- Never re-exports styled components.
+
+```tsx
+export type { ComponentProps };
+export { Component };
+```
+
+### Patterns
+
+**Thin wrapper** — styled props live in `styled.ts`, `index.tsx` adds `children`:
+
+```tsx
+// styled.ts
+interface ContainerProps { direction?: FlexDirectionToken; ... }
+const StyledContainer = styled.View<ContainerProps>`...`;
+
+// index.tsx
+interface ContainerComponentProps extends ContainerProps {
+  children?: ReactNode;
+}
+
+const Container = ({ children, ...props }: ContainerComponentProps) => (
+  <StyledContainer {...props}>{children}</StyledContainer>
+);
+
+export type { ContainerComponentProps as ContainerProps };
+export { Container };
+```
+
+**Composition with Padding** — styled handles visuals, `Padding` handles spacing:
+
+```tsx
+// styled.ts — only visual props
+interface StyledCardProps { radius?: BorderRadiusToken; bg?: ColorToken; }
+const StyledCard = styled.View<StyledCardProps>`...`;
+
+// index.tsx — public props extend PaddingProps
+interface CardProps extends PaddingProps {
+  radius?: BorderRadiusToken;
+  bg?: ColorToken;
+}
+
+const Card = ({ padding = 'md', radius, bg, children, ...paddingProps }: CardProps) => (
+  <StyledCard radius={radius} bg={bg}>
+    <Padding padding={padding} {...paddingProps}>{children}</Padding>
+  </StyledCard>
+);
+```
+
+**Business logic** — props split between styled (visual) and index (behavior):
+
+```tsx
+// styled.ts — only props consumed by styles
+interface StyledButtonProps { bg?: ColorToken; disabled?: boolean; ... }
+
+// index.tsx — full public API
+interface ButtonProps extends PaddingProps {
+  label: string;
+  onPress: () => void;
+  loading?: boolean;
+  ...
+}
+```
+
+**Base components** (`src/components/base/`) — same folder pattern. `index.tsx` may resolve shorthand props before passing resolved values to `styled.ts` (see `Padding`).
+
+Components with no styled-components skip `styled.ts` and live entirely in `index.tsx`.
 
 ## Tests
 
