@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+
 import type {
   AlignItemsToken,
   BorderRadiusToken,
@@ -6,7 +7,7 @@ import type {
   FlexDirectionToken,
   JustifyContentToken,
   SpacingToken,
-} from '../../theme';
+} from '../../../theme';
 
 interface ContainerProps {
   direction?: FlexDirectionToken;

@@ -1,5 +1,5 @@
 import type { ColorToken } from '../../theme';
-import { Container } from '../Container';
+import { Container } from '../base/Container';
 
 import { StyledActivityIndicator } from './styled';
 
