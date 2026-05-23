@@ -4,6 +4,8 @@ export type { BadgeProps } from './Badge';
 export { Badge } from './Badge';
 export type { ButtonProps } from './Button';
 export { Button } from './Button';
+export type { BorderProps } from './base/Border';
+export { Border } from './base/Border';
 export type { PaddingProps } from './base/Padding';
 export { Padding } from './base/Padding';
 export type { CardProps } from './Card';
