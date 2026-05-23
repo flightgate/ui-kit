@@ -54,6 +54,13 @@ const defaultTheme: Theme = {
     full: 9999,
   },
 
+  borderWidths: {
+    none: 0,
+    sm: 1,
+    md: 2,
+    lg: 4,
+  },
+
   fontFamilies: {
     regular: 'System',
     semiBold: 'System',

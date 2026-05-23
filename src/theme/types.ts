@@ -51,6 +51,13 @@ interface ThemeBorderRadius {
   full: number;
 }
 
+interface ThemeBorderWidths {
+  none: number;
+  sm: number;
+  md: number;
+  lg: number;
+}
+
 interface ThemeFontFamilies {
   regular: string;
   semiBold: string;
@@ -63,6 +70,7 @@ interface Theme {
   fontSizes: ThemeFontSizes;
   spacings: ThemeSpacings;
   borderRadius: ThemeBorderRadius;
+  borderWidths: ThemeBorderWidths;
   fontFamilies: ThemeFontFamilies;
 }
 
@@ -71,6 +79,7 @@ type ColorToken = keyof ThemeColors;
 type FontSizeToken = keyof ThemeFontSizes;
 type SpacingToken = keyof ThemeSpacings;
 type BorderRadiusToken = keyof ThemeBorderRadius;
+type BorderWidthToken = keyof ThemeBorderWidths;
 type FontFamilyToken = keyof ThemeFontFamilies;
 
 // Layout token types — used as component prop values
@@ -92,6 +101,7 @@ type DeepPartial<T> = {
 export type {
   AlignItemsToken,
   BorderRadiusToken,
+  BorderWidthToken,
   ColorToken,
   DeepPartial,
   FlexDirectionToken,
@@ -102,6 +112,7 @@ export type {
   TextAlignToken,
   Theme,
   ThemeBorderRadius,
+  ThemeBorderWidths,
   ThemeColors,
   ThemeFontFamilies,
   ThemeFontSizes,

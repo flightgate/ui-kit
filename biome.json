@@ -38,16 +38,8 @@
             },
             "patterns": [
               {
-                "group": ["../*"],
-                "message": "Using '../*' is not encouraged"
-              },
-              {
-                "group": ["../../*"],
-                "message": "Using '../../*' is not encouraged"
-              },
-              {
-                "group": ["../../../*"],
-                "message": "Using '../../../*' is not encouraged"
+                "group": ["../**", "../../**", "../../../**"],
+                "message": "Using relative imports is not encouraged"
               }
             ]
           }

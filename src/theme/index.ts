@@ -3,6 +3,7 @@ export { defaultTheme } from './defaults';
 export type {
   AlignItemsToken,
   BorderRadiusToken,
+  BorderWidthToken,
   ColorToken,
   DeepPartial,
   FlexDirectionToken,
@@ -13,6 +14,7 @@ export type {
   TextAlignToken,
   Theme,
   ThemeBorderRadius,
+  ThemeBorderWidths,
   ThemeColors,
   ThemeFontFamilies,
   ThemeFontSizes,
