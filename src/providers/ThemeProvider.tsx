@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
-import type { Theme } from 'src/theme';
-
-import { defaultTheme } from 'src/theme';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/native';
+import type { Theme } from '../theme';
+import { defaultTheme } from '../theme';
 
 interface ThemeProviderProps {
   theme?: Theme;

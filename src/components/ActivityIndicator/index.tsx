@@ -1,5 +1,5 @@
-import { Container } from 'src/components/Container';
-import type { ColorToken } from 'src/theme';
+import type { ColorToken } from '../../theme';
+import { Container } from '../Container';
 
 import { StyledActivityIndicator } from './styled';
 

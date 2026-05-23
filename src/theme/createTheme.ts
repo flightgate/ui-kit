@@ -1,4 +1,4 @@
-import { deepMerge } from 'src/services';
+import { deepMerge } from '../services';
 import { defaultTheme } from './defaults';
 import type { DeepPartial, Theme } from './types';
 

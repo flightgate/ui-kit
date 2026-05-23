@@ -1,4 +1,5 @@
 import { TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 import type {
   AlignItemsToken,
   BorderRadiusToken,
@@ -6,8 +7,7 @@ import type {
   ColorToken,
   JustifyContentToken,
   SpacingToken,
-} from 'src/theme';
-import styled from 'styled-components/native';
+} from '../../theme';
 
 interface StyledButtonProps {
   bg?: ColorToken;

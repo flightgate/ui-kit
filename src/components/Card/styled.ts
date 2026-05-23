@@ -1,5 +1,5 @@
-import type { BorderRadiusToken, ColorToken } from 'src/theme';
 import styled from 'styled-components/native';
+import type { BorderRadiusToken, ColorToken } from '../../theme';
 
 interface StyledCardProps {
   radius?: BorderRadiusToken;

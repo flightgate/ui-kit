@@ -1,4 +1,4 @@
-import type { DeepPartial } from 'src/theme';
+import type { DeepPartial } from '../theme';
 
 const isObject = (value: unknown): value is object => typeof value === 'object' && value !== null;
 

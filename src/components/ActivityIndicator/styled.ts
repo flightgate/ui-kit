@@ -1,6 +1,6 @@
 import { ActivityIndicator as RNActivityIndicator } from 'react-native';
-import type { ColorToken } from 'src/theme';
 import styled from 'styled-components/native';
+import type { ColorToken } from '../../theme';
 
 interface StyledActivityIndicatorProps {
   color?: ColorToken;

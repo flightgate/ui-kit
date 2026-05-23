@@ -1,5 +1,5 @@
-import type { ColorToken, FontFamilyToken, FontSizeToken, TextAlignToken } from 'src/theme';
 import styled from 'styled-components/native';
+import type { ColorToken, FontFamilyToken, FontSizeToken, TextAlignToken } from '../../theme';
 
 interface TextProps {
   color?: ColorToken;

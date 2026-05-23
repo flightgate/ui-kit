@@ -1,5 +1,5 @@
 import { type ReactNode, useMemo } from 'react';
-import type { SpacingToken } from 'src/theme';
+import type { SpacingToken } from '../../../theme';
 
 import { StyledPadding } from './styled';
 

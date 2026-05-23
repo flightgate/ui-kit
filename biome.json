@@ -38,8 +38,8 @@
             },
             "patterns": [
               {
-                "group": ["../**", "../../**", "../../../**"],
-                "message": "Using relative imports is not encouraged"
+                "group": ["src/**"],
+                "message": "Using relative imports instead of absolute imports"
               }
             ]
           }

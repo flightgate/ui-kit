@@ -1,8 +1,5 @@
-import type { BorderRadiusToken, ColorToken } from 'src/theme';
-
-// biome-ignore lint/style/noRestrictedImports: To prevent circular dependency
+import type { BorderRadiusToken, ColorToken } from '../../theme';
 import { Border, type BorderProps } from '../base/Border';
-// biome-ignore lint/style/noRestrictedImports: To prevent circular dependency
 import { Padding, type PaddingProps } from '../base/Padding';
 import { StyledCard } from './styled';
 

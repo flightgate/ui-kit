@@ -1,5 +1,5 @@
 import { type ReactNode, useMemo } from 'react';
-import type { BorderRadiusToken, BorderWidthToken, ColorToken } from 'src/theme';
+import type { BorderRadiusToken, BorderWidthToken, ColorToken } from '../../../theme';
 
 import { type ResolvedBorderProps, StyledBorder } from './styled';
 

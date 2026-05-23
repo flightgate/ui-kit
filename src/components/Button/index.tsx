@@ -1,6 +1,4 @@
 import type { ReactNode } from 'react';
-import { ActivityIndicator } from 'src/components/ActivityIndicator';
-import { Text } from 'src/components/Text';
 import type {
   AlignItemsToken,
   BorderRadiusToken,
@@ -8,9 +6,10 @@ import type {
   ColorToken,
   JustifyContentToken,
   SpacingToken,
-} from 'src/theme';
-// biome-ignore lint/style/noRestrictedImports: To prevent circular dependency
+} from '../../theme';
+import { ActivityIndicator } from '../ActivityIndicator';
 import { Padding, type PaddingProps } from '../base/Padding';
+import { Text } from '../Text';
 
 import { StyledButton, StyledButtonContent } from './styled';
 

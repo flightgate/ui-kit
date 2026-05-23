@@ -1,5 +1,5 @@
-import type { ColorToken } from 'src/theme';
 import styled from 'styled-components/native';
+import type { ColorToken } from '../../theme';
 
 interface StyledBadgeContainerProps {
   bg?: ColorToken;

@@ -1,5 +1,5 @@
-import type { SpacingToken } from 'src/theme';
 import styled from 'styled-components/native';
+import type { SpacingToken } from '../../theme';
 
 type SpacingDirection = 'horizontal' | 'vertical';
 

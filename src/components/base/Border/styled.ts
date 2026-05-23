@@ -1,5 +1,5 @@
-import type { BorderRadiusToken, BorderWidthToken, ColorToken } from 'src/theme';
 import styled, { css } from 'styled-components/native';
+import type { BorderRadiusToken, BorderWidthToken, ColorToken } from '../../../theme';
 
 interface ResolvedBorderProps {
   borderTopWidth?: BorderWidthToken;
