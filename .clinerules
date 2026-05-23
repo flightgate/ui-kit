@@ -1,0 +1,83 @@
+# .clinerules
+
+## Standard Workflow
+
+After making any changes to JavaScript/TypeScript files:
+1. Run `npm run lint:fix` to automatically fix linting issues
+2. Run `npm run format` to format the code
+3. Confirm there are no errors before completing the task
+
+## JavaScript/TypeScript Standards
+
+### Function Declarations
+- Always use `const` with arrow functions
+- Never use the `function` keyword
+- Example:
+```javascript
+  const handleClick = () => {
+    // code here
+  };
+```
+
+### Exports
+- Use a single export statement at the end of the file
+- Group all exports together
+- Never use inline exports
+- Example:
+```javascript
+  const ComponentA = () => {
+    // code
+  };
+  
+  const ComponentB = () => {
+    // code
+  };
+  
+  const helper = () => {
+    // code
+  };
+  
+  // Single export at the end
+  export { ComponentA, ComponentB, helper };
+```
+
+### Imports
+- Organize imports: external packages first, then internal modules
+- Use named imports whenever possible
+- Group imports by category
+- Example:
+```javascript
+  // External packages
+  import React from 'react';
+  import { useState, useEffect } from 'react';
+  
+  // Internal modules
+  import { helper } from './utils';
+  import { ComponentA } from './components';
+```
+
+## Code Quality
+
+- Ensure all code follows ESLint rules
+- Use Prettier for consistent formatting
+- No console.logs in production code
+- Proper error handling in all async functions
+
+## Tests
+
+- Use the Arrange/Act/Assert pattern in every test
+- Separate each section with a blank line and a comment (`// Arrange`, `// Act`, `// Assert`)
+- Declare inputs in Arrange, never inline in Act
+- Example:
+```typescript
+  it('does something', () => {
+    // Arrange
+    const input = { a: 1 };
+
+    // Act
+    const result = doSomething(input);
+
+    // Assert
+    expect(result).toBe(true);
+  });
+```

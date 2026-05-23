@@ -1,1 +1,1 @@
-// Providers exports
+export { ThemeProvider } from './ThemeProvider';
