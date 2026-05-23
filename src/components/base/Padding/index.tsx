@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import type { SpacingToken } from 'src/theme';
 
 import { StyledPadding } from './styled';
@@ -11,7 +11,7 @@ interface PaddingProps {
   paddingBottom?: SpacingToken;
   paddingLeft?: SpacingToken;
   paddingRight?: SpacingToken;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Padding = ({

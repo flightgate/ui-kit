@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import type { BorderRadiusToken, BorderWidthToken, ColorToken } from 'src/theme';
 
 import { type ResolvedBorderProps, StyledBorder } from './styled';
@@ -22,7 +22,7 @@ interface BorderProps {
 }
 
 interface BorderComponentProps extends BorderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Border = ({

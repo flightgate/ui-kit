@@ -1,6 +1,4 @@
 import type { ReactNode } from 'react';
-
-import { Padding, type PaddingProps } from 'src/components';
 import { ActivityIndicator } from 'src/components/ActivityIndicator';
 import { Text } from 'src/components/Text';
 import type {
@@ -11,6 +9,8 @@ import type {
   JustifyContentToken,
   SpacingToken,
 } from 'src/theme';
+// biome-ignore lint/style/noRestrictedImports: To prevent circular dependency
+import { Padding, type PaddingProps } from '../base/Padding';
 
 import { StyledButton, StyledButtonContent } from './styled';
 
