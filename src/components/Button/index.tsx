@@ -4,6 +4,8 @@ import type {
   BorderRadiusToken,
   BorderWidthToken,
   ColorToken,
+  FontFamilyToken,
+  FontSizeToken,
   JustifyContentToken,
   SpacingToken,
 } from '../../theme';
@@ -13,7 +15,7 @@ import { Text } from '../Text';
 
 import { StyledButton, StyledButtonContent } from './styled';
 
-interface ButtonProps extends PaddingProps {
+interface ButtonProps extends Omit<PaddingProps, 'children'> {
   label: string;
   onPress: () => void;
   bg?: ColorToken;
@@ -28,6 +30,8 @@ interface ButtonProps extends PaddingProps {
   disabled?: boolean;
   loading?: boolean;
   radius?: BorderRadiusToken;
+  fontSize?: FontSizeToken;
+  fontFamily?: FontFamilyToken;
 }
 
 const Button = ({
@@ -45,6 +49,8 @@ const Button = ({
   disabled = false,
   loading = false,
   radius = 'sm',
+  fontSize,
+  fontFamily,
   paddingHorizontal = 'md',
   paddingVertical = 'sm',
   ...paddingProps
@@ -67,7 +73,9 @@ const Button = ({
       ) : (
         <StyledButtonContent gap={iconGap} align={align} justify={justify}>
           {prefixIcon}
-          <Text color={color}>{label}</Text>
+          <Text color={color} fontSize={fontSize} fontFamily={fontFamily}>
+            {label}
+          </Text>
           {suffixIcon}
         </StyledButtonContent>
       )}

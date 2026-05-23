@@ -84,6 +84,7 @@ type FontFamilyToken = keyof ThemeFontFamilies;
 
 // Layout token types — used as component prop values
 type FlexDirectionToken = 'row' | 'column' | 'row-reverse' | 'column-reverse';
+type FlexWrapToken = 'wrap' | 'nowrap' | 'wrap-reverse';
 type JustifyContentToken =
   | 'flex-start'
   | 'flex-end'
@@ -105,6 +106,7 @@ export type {
   ColorToken,
   DeepPartial,
   FlexDirectionToken,
+  FlexWrapToken,
   FontFamilyToken,
   FontSizeToken,
   JustifyContentToken,

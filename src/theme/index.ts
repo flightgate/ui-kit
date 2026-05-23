@@ -1,5 +1,5 @@
 export { createTheme } from './createTheme';
-export { defaultTheme } from './defaults';
+export { defaultTheme, LINE_HEIGHT_MULTIPLIER } from './defaults';
 export type {
   AlignItemsToken,
   BorderRadiusToken,
@@ -7,6 +7,7 @@ export type {
   ColorToken,
   DeepPartial,
   FlexDirectionToken,
+  FlexWrapToken,
   FontFamilyToken,
   FontSizeToken,
   JustifyContentToken,

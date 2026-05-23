@@ -1,5 +1,7 @@
 import type { Theme } from './types';
 
+const LINE_HEIGHT_MULTIPLIER = 1.3;
+
 const defaultTheme: Theme = {
   colors: {
     primary: '#6366F1',
@@ -69,4 +71,4 @@ const defaultTheme: Theme = {
   },
 };
 
-export { defaultTheme };
+export { defaultTheme, LINE_HEIGHT_MULTIPLIER };
