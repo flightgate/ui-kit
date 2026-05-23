@@ -1,0 +1,82 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.14/schema.json",
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error",
+        "useHookAtTopLevel": "error",
+        "useExhaustiveDependencies": "error"
+      },
+      "performance": {
+        "noNamespaceImport": "error"
+      },
+      "style": {
+        "useConst": "error",
+        "useConsistentArrowReturn": "error",
+        "useImportType": "error",
+        "noNonNullAssertion": "error",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "react": {
+                "importNames": ["default"]
+              },
+              "expo-router": {
+                "importNames": ["router"]
+              }
+            },
+            "patterns": [
+              {
+                "group": ["../*"],
+                "message": "Using '../*' is not encouraged"
+              },
+              {
+                "group": ["../../*"],
+                "message": "Using '../../*' is not encouraged"
+              },
+              {
+                "group": ["../../../*"],
+                "message": "Using '../../../*' is not encouraged"
+              }
+            ]
+          }
+        }
+      },
+      "complexity": {
+        "useOptionalChain": "error",
+        "useSimplifiedLogicExpression": "error",
+        "useArrowFunction": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "error",
+        "noConsole": "error",
+        "noExplicitAny": "error",
+        "noVar": "error"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "all",
+      "semicolons": "always"
+    }
+  }
+}
