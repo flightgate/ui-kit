@@ -1,5 +1,12 @@
 import { TouchableOpacity } from 'react-native';
-import type { BorderRadiusToken, BorderWidthToken, ColorToken } from 'src/theme';
+import type {
+  AlignItemsToken,
+  BorderRadiusToken,
+  BorderWidthToken,
+  ColorToken,
+  JustifyContentToken,
+  SpacingToken,
+} from 'src/theme';
 import styled from 'styled-components/native';
 
 interface StyledButtonProps {
@@ -8,6 +15,12 @@ interface StyledButtonProps {
   borderColor?: ColorToken;
   disabled?: boolean;
   radius?: BorderRadiusToken;
+}
+
+interface StyledButtonContentProps {
+  gap?: SpacingToken;
+  align?: AlignItemsToken;
+  justify?: JustifyContentToken;
 }
 
 const StyledButton = styled(TouchableOpacity).attrs({
@@ -22,5 +35,13 @@ const StyledButton = styled(TouchableOpacity).attrs({
   opacity: ${({ disabled = false }) => (disabled ? 0.5 : 1)};
 `;
 
-export type { StyledButtonProps };
-export { StyledButton };
+const StyledButtonContent = styled.View<StyledButtonContentProps>`
+  flex-direction: row;
+  align-items: ${({ align = 'center' }) => align};
+  justify-content: ${({ justify = 'center' }) => justify};
+  gap: ${({ theme, gap = 'xs' }) => theme.spacings[gap]}px;
+  width: 100%;
+`;
+
+export type { StyledButtonContentProps, StyledButtonProps };
+export { StyledButton, StyledButtonContent };

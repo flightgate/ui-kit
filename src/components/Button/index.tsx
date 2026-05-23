@@ -1,9 +1,18 @@
+import type { ReactNode } from 'react';
+
 import { Padding, type PaddingProps } from 'src/components';
 import { ActivityIndicator } from 'src/components/ActivityIndicator';
 import { Text } from 'src/components/Text';
-import type { BorderRadiusToken, BorderWidthToken, ColorToken } from 'src/theme';
+import type {
+  AlignItemsToken,
+  BorderRadiusToken,
+  BorderWidthToken,
+  ColorToken,
+  JustifyContentToken,
+  SpacingToken,
+} from 'src/theme';
 
-import { StyledButton } from './styled';
+import { StyledButton, StyledButtonContent } from './styled';
 
 interface ButtonProps extends PaddingProps {
   label: string;
@@ -12,6 +21,11 @@ interface ButtonProps extends PaddingProps {
   color?: ColorToken;
   borderWidth?: BorderWidthToken;
   borderColor?: ColorToken;
+  prefixIcon?: ReactNode;
+  suffixIcon?: ReactNode;
+  iconGap?: SpacingToken;
+  align?: AlignItemsToken;
+  justify?: JustifyContentToken;
   disabled?: boolean;
   loading?: boolean;
   radius?: BorderRadiusToken;
@@ -24,6 +38,11 @@ const Button = ({
   color = 'white',
   borderWidth = 'none',
   borderColor = 'primary',
+  prefixIcon,
+  suffixIcon,
+  iconGap = 'xs',
+  align = 'center',
+  justify = 'center',
   disabled = false,
   loading = false,
   radius = 'sm',
@@ -47,7 +66,11 @@ const Button = ({
       {loading ? (
         <ActivityIndicator color={color} size="small" />
       ) : (
-        <Text color={color}>{label}</Text>
+        <StyledButtonContent gap={iconGap} align={align} justify={justify}>
+          {prefixIcon}
+          <Text color={color}>{label}</Text>
+          {suffixIcon}
+        </StyledButtonContent>
       )}
     </Padding>
   </StyledButton>
