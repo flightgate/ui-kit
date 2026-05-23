@@ -1,6 +1,5 @@
+import type { ColorToken, FontFamilyToken, FontSizeToken, TextAlignToken } from 'src/theme';
 import styled from 'styled-components/native';
-
-import type { ColorToken, FontFamilyToken, FontSizeToken, TextAlignToken } from '../../theme/types';
 
 interface TextProps {
   color?: ColorToken;
@@ -9,7 +8,7 @@ interface TextProps {
   align?: TextAlignToken;
 }
 
-const Text = styled.Text<TextProps>`
+const StyledText = styled.Text<TextProps>`
   color: ${({ theme, color = 'textPrimary' }) => theme.colors[color]};
   font-size: ${({ theme, fontSize = 'md' }) => theme.fontSizes[fontSize]}px;
   font-family: ${({ theme, fontFamily = 'regular' }) => theme.fontFamilies[fontFamily]};
@@ -17,4 +16,4 @@ const Text = styled.Text<TextProps>`
 `;
 
 export type { TextProps };
-export { Text };
+export { StyledText };
