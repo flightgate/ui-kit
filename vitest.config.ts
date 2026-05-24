@@ -11,7 +11,12 @@ export default defineConfig({
         functions: 70,
         lines: 70,
       },
-      include: ['src/**/*.spec.ts'],
+      include: [
+        'src/services',
+        'src/components',
+        '!src/components/**/*.tsx',
+        '!src/components/**/styled.ts',
+      ],
     },
   },
 });

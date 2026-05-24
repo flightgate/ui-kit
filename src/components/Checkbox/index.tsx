@@ -1,15 +1,12 @@
-import type { ColorToken, SpacingToken } from '../../theme';
+import type { SpacingToken } from '../../theme';
 import { Button } from '../Button';
 import { Container } from '../base/Container';
 import { Spacing } from '../Spacing';
 import { Text } from '../Text';
-
-interface CheckboxOption {
-  label: string;
-  value: string;
-}
-
-type CheckboxAppearance = 'background' | 'borderOnly';
+import type { CheckboxAppearance } from './getCheckboxColors';
+import { getCheckboxColors } from './getCheckboxColors';
+import type { CheckboxOption } from './toggleCheckbox';
+import { toggleCheckbox } from './toggleCheckbox';
 
 interface CheckboxProps {
   options: CheckboxOption[];
@@ -22,25 +19,6 @@ interface CheckboxProps {
   gap?: SpacingToken;
 }
 
-const getColors = (
-  isSelected: boolean,
-  appearance: CheckboxAppearance,
-): { bg: ColorToken; color: ColorToken; borderColor: ColorToken } => {
-  if (appearance === 'background') {
-    return {
-      bg: isSelected ? 'primary' : 'transparent',
-      color: isSelected ? 'white' : 'textSecondary',
-      borderColor: isSelected ? 'primary' : 'bgSecondary',
-    };
-  }
-
-  return {
-    bg: 'transparent',
-    color: isSelected ? 'primary' : 'textSecondary',
-    borderColor: isSelected ? 'primary' : 'textSecondary',
-  };
-};
-
 const Checkbox = ({
   options,
   value,
@@ -52,18 +30,7 @@ const Checkbox = ({
   gap = 'xs',
 }: CheckboxProps) => {
   const handlePress = (option: CheckboxOption) => {
-    if (readOnly) return;
-
-    const isSelected = value.some((item) => item.value === option.value);
-
-    if (canDeselect && isSelected) {
-      onChange(value.filter((item) => item.value !== option.value));
-      return;
-    }
-
-    if (!isSelected) {
-      onChange([...value, option]);
-    }
+    onChange(toggleCheckbox(value, option, canDeselect, readOnly));
   };
 
   return (
@@ -71,7 +38,7 @@ const Checkbox = ({
       <Container direction="row" gap={gap} wrap="wrap">
         {options.map((option, index) => {
           const isSelected = value.some((item) => item.value === option.value);
-          const { bg, color, borderColor } = getColors(isSelected, appearance);
+          const { bg, color, borderColor } = getCheckboxColors(isSelected, appearance);
 
           return (
             <Button

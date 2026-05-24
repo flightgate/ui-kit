@@ -1,6 +1,6 @@
 import { type ReactNode, useMemo } from 'react';
 import type { BorderRadiusToken, BorderWidthToken, ColorToken } from '../../../theme';
-
+import { resolveBorder } from './resolveBorder';
 import { type ResolvedBorderProps, StyledBorder } from './styled';
 
 interface BorderProps {
@@ -43,45 +43,43 @@ const Border = ({
   radius,
   children,
 }: BorderComponentProps) => {
-  const resolved = useMemo<ResolvedBorderProps>(() => {
-    const verticalWidth = borderVerticalWidth ?? borderWidth;
-    const verticalColor = borderVerticalColor ?? borderColor;
-
-    const horizontalWidth = borderHorizontalWidth ?? borderWidth;
-    const horizontalColor = borderHorizontalColor ?? borderColor;
-
-    return {
-      borderTopWidth: borderTopWidth ?? verticalWidth,
-      borderTopColor: borderTopColor ?? verticalColor,
-
-      borderBottomWidth: borderBottomWidth ?? verticalWidth,
-      borderBottomColor: borderBottomColor ?? verticalColor,
-
-      borderLeftWidth: borderLeftWidth ?? horizontalWidth,
-      borderLeftColor: borderLeftColor ?? horizontalColor,
-
-      borderRightWidth: borderRightWidth ?? horizontalWidth,
-      borderRightColor: borderRightColor ?? horizontalColor,
-
+  const resolved = useMemo<ResolvedBorderProps>(
+    () =>
+      resolveBorder({
+        borderWidth,
+        borderColor,
+        borderVerticalWidth,
+        borderVerticalColor,
+        borderHorizontalWidth,
+        borderHorizontalColor,
+        borderTopWidth,
+        borderTopColor,
+        borderBottomWidth,
+        borderBottomColor,
+        borderLeftWidth,
+        borderLeftColor,
+        borderRightWidth,
+        borderRightColor,
+        radius,
+      }) as ResolvedBorderProps,
+    [
+      borderWidth,
+      borderColor,
+      borderVerticalWidth,
+      borderVerticalColor,
+      borderHorizontalWidth,
+      borderHorizontalColor,
+      borderTopWidth,
+      borderTopColor,
+      borderBottomWidth,
+      borderBottomColor,
+      borderLeftWidth,
+      borderLeftColor,
+      borderRightWidth,
+      borderRightColor,
       radius,
-    };
-  }, [
-    borderWidth,
-    borderColor,
-    borderVerticalWidth,
-    borderVerticalColor,
-    borderHorizontalWidth,
-    borderHorizontalColor,
-    borderTopWidth,
-    borderTopColor,
-    borderBottomWidth,
-    borderBottomColor,
-    borderLeftWidth,
-    borderLeftColor,
-    borderRightWidth,
-    borderRightColor,
-    radius,
-  ]);
+    ],
+  );
 
   return <StyledBorder {...resolved}>{children}</StyledBorder>;
 };

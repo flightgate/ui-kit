@@ -12,9 +12,9 @@ import type {
   FontFamilyToken,
   FontSizeToken,
 } from '../../theme';
-import { LINE_HEIGHT_MULTIPLIER } from '../../theme';
 import { Spacing } from '../Spacing';
 import { Text } from '../Text';
+import { resolveInputHeight } from './resolveInputHeight';
 import { StyledTextInput, SuffixIconContainer } from './styled';
 
 interface InputProps
@@ -92,12 +92,10 @@ const Input = forwardRef<ElementRef<typeof StyledTextInput>, InputProps>(
 
     const hasSuffix = isPassword || !!suffixIcon;
 
-    const inputHeight = useMemo(() => {
-      if (multiline && numberOfLines) {
-        return numberOfLines * theme.fontSizes[fontSize] * LINE_HEIGHT_MULTIPLIER;
-      }
-      return 56;
-    }, [multiline, numberOfLines, fontSize, theme]);
+    const inputHeight = useMemo(
+      () => resolveInputHeight(multiline, numberOfLines, theme.fontSizes[fontSize]),
+      [multiline, numberOfLines, fontSize, theme],
+    );
 
     const activeBorderColor: ColorToken = isFocused && borderHighlight ? 'primary' : borderColor;
     const activeBorderWidth: BorderWidthToken = isFocused && borderHighlight ? 'md' : borderWidth;

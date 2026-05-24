@@ -1,6 +1,6 @@
 import { type ReactNode, useMemo } from 'react';
 import type { SpacingToken } from '../../../theme';
-
+import { resolvePadding } from './resolvePadding';
 import { StyledPadding } from './styled';
 
 interface PaddingProps {
@@ -24,25 +24,27 @@ const Padding = ({
   paddingRight,
   children,
 }: PaddingProps) => {
-  const resolved = useMemo(() => {
-    const vertical = paddingVertical ?? padding;
-    const horizontal = paddingHorizontal ?? padding;
-
-    return {
-      paddingTop: paddingTop ?? vertical,
-      paddingBottom: paddingBottom ?? vertical,
-      paddingLeft: paddingLeft ?? horizontal,
-      paddingRight: paddingRight ?? horizontal,
-    };
-  }, [
-    padding,
-    paddingVertical,
-    paddingHorizontal,
-    paddingTop,
-    paddingBottom,
-    paddingLeft,
-    paddingRight,
-  ]);
+  const resolved = useMemo(
+    () =>
+      resolvePadding({
+        padding,
+        paddingVertical,
+        paddingHorizontal,
+        paddingTop,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+      }),
+    [
+      padding,
+      paddingVertical,
+      paddingHorizontal,
+      paddingTop,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+    ],
+  );
 
   return <StyledPadding {...resolved}>{children}</StyledPadding>;
 };
