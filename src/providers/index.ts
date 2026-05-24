@@ -3,3 +3,6 @@ export { DEFAULT_FONT_ASSETS, DEFAULT_FONT_FAMILIES, FontProvider } from './Font
 export type { KeyboardProviderProps } from './KeyboardProvider';
 export { KeyboardProvider } from './KeyboardProvider';
 export { ThemeProvider } from './ThemeProvider';
+export { ToastProvider } from './ToastProvider';
+export type { UIKitProviderProps } from './UIKitProvider';
+export { UIKitProvider } from './UIKitProvider';
