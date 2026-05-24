@@ -5,6 +5,7 @@
     "@flightgate/ui-kit": "0.1.0-beta.1"
   },
   "changesets": [
-    "initial-component-library"
+    "initial-component-library",
+    "providers-toast-fonts-tests"
   ]
 }
